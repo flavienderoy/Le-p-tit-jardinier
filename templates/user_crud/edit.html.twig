@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block content %}
+
+<div class="bloc">
+    <h1>Modification</h1>
+
+    {{ include('user_crud/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a class="bouton_validation" style="position: absolute; margin-top:100px;" href="{{ path('app_user_crud_index') }}">Retour vers la liste</a>
+</div>
+{% endblock %}

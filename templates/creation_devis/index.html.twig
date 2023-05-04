@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CreerHaieController!
+{% endblock %}
+{% block body %}
+	{% block content %}
+
+		<div class="bloc">
+			<h2>Votre devis a bien été créé.</h2>
+			<input type="button" style="position: absolute; margin-top:100px;" class="bouton_validation" href="{{ path('app_accueil') }}" value="Retour vers l'accueil">
+		</div>
+	{% endblock %}
+{% endblock %}

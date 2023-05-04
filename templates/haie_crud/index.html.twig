@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des haies
+{% endblock %}
+
+{% block content %}
+
+
+	<div class="bloc">
+
+		<h1>Liste des haies</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for haie in haies %}
+					<tr>
+						<td>{{ haie.code }}</td>
+						<td>{{ haie.nom }}</td>
+						<td>{{ haie.prix }}</td>
+						<td>
+							<a class="bouton_formulaire" href="{{ path('app_haie_crud_show', {'code': haie.code}) }}">Afficher</a>
+							<a class="bouton_formulaire" href="{{ path('app_haie_crud_edit', {'code': haie.code}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">Aucun résultat trouvé.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a class="bouton_validation" style="position: absolute; margin-top:100px;" href="{{ path('app_haie_crud_new') }}">Créer une nouvelle haie</a>
+
+	</div>
+{% endblock %}

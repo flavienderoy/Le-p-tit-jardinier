@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Devis index
+{% endblock %}
+
+{% block content %}
+
+	<div class="bloc">
+		<h1>Liste des devis</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Date</th>
+					<th>Hauteur</th>
+					<th>Longueur</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for devi in devis %}
+					<tr>
+						<td>{{ devi.id }}</td>
+						<td>{{ devi.date ? devi.date|date('Y-m-d') : '' }}</td>
+						<td>{{ devi.hauteur }}</td>
+						<td>{{ devi.longueur }}</td>
+						<td>
+							<a class="bouton_formulaire" href="{{ path('app_devis_crud_show', {'id': devi.id}) }}">Afficher</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Aucun résultat trouvé.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<input type="button" style="position: absolute; margin-top:100px;" class="bouton_validation" href="{{ path('app_accueil') }}" value="Retour vers l'accueil">
+	</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Haie
+{% endblock %}
+
+{% block content %}
+
+	<div class="bloc">
+
+		<h1>Modification de la haie</h1>
+
+		<div>
+
+			{{ include('haie_crud/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+			{{ include('haie_crud/_delete_form.html.twig') }}
+
+		</div>
+
+		<a class="bouton_validation" style="position: absolute; margin-top:175px;" href="{{ path('app_haie_crud_index') }}">Retour vers la liste</a>
+
+
+	</div>
+{% endblock %}

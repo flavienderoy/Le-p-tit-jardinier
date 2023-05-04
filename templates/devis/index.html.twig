@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DevisController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	{% block content %}
+		{# Contenu de la page #}
+
+		<div class="bloc">
+			<div class="example-wrapper">
+
+				<h2 style=" display: inline;">Récapitulatif de votre
+					<span style="color: #319F5F;">devis</span>.</h2>
+
+				{% if maHaie.getNom == "Abélia" %}
+					{% set prixhaie = prix * longueur %}
+				{% elseif maHaie.getNom == "Laurier" %}
+					{% set prixhaie = prix * longueur %}
+				{% elseif maHaie.getNom == "Thuya" %}
+					{% set prixhaie = prix * longueur %}
+				{% elseif maHaie.getNom == "Troène"%}
+					{% set prixhaie = prix * longueur %}
+				{% endif %}
+
+				{% if hauteur > 150 %}
+					{% set prixWithHauteur = prixhaie * 1.5 %}
+				{% else %}
+					{% set prixWithHauteur = prixhaie * 1 %}
+				{% endif %}
+
+				{% if typeClient == 'e' %}
+					{% set pourcentremise = 10 %}
+					{% set remise = prixWithHauteur * 0.10 %}
+					{% set calculTotal = prixWithHauteur - remise %}
+					<br>
+					<p>Vous avez obtenu une remise de :
+						{{remise}}€</p>
+				{% else %}
+					{% set pourcentremise = 0 %}
+					{% set remise = 0 %}
+					{% set calculTotal = prixWithHauteur %}
+				{% endif %}
+
+				{# Autre solution #}
+
+				{# {% set total = prix * longueur %}
+												{% if hauteur > 150 %}
+												  {% set total = total * 1.5 %}
+												{% endif %}
+												
+												{% if choix == "Entreprise" %}
+												  {% set remise = total * 0.1 %}
+												  <h3>Vous avez une remise de {{remise}} €</h3>
+												  {% set total = total - remise %}
+												  {% endif %}
+												  <h3>Le prix total est de {{total}} €</h3> #}
+
+
+				{% if typeClient == 'p' %}
+					{% set choixlabel = 'Particulier' %}
+				{% elseif typeClient == 'e' %}
+					{% set choixlabel = 'Entreprise' %}
+				{% endif %}
+
+				<p>Vous êtes un(e)
+					{{choixlabel}}
+					(vous bénéficiez d'une remise de
+					{{pourcentremise}}%).
+					<br>
+					Rappel : Mesures de la haie : Longueur
+					{{longueur}}m Hauteur
+					{{hauteur}}m
+					<br>
+					Le montant de votre devis est de :
+					{{calculTotal}}€</p>
+
+
+				<p>Vous souhaitez créer ce devis ?</p>
+				<a class="bouton_validation" href="{{ path('app_creation_devis') }}">Créer le devis<a></div>
+
+				</div>
+			{% endblock %}
+		{% endblock %}

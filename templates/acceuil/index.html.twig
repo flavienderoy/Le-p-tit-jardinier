@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{# La vue est générée automatiquement lors de la création du contrôleur  #}
+
+{% block title %}Le p'tit jardinier !
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+	{% block content %}
+
+		<div class="bloc" style="display: flex; align-items: center">
+
+			<div class="example-wrapper">
+
+				<h1>Le p'tit jardinier !</h1>
+				<br>
+				<p style="width: 700px;">Bienvenue sur Le p'tit jardinier, notre site spécialisé dans la génération de devis en ligne pour la taille de haies. Grâce à nos outils de mesure en ligne, nous sommes en mesure de vous fournir un devis précis et rapide pour tous vos besoins de taille de haies. Notre équipe de professionnels expérimentés est là pour vous offrir un service rapide et fiable.</p>
+				<br>
+				{% if is_granted('ROLE_USER') %}
+					<a class="bouton_validation" href="{{ path('app_mesure') }}">Obtenir des devis en ligne pour une taille de haie</a>
+				{% else %}
+					<a class="bouton_validation" href="{{ path('app_login') }}">Veuillez vous connecter ou vous inscrire pour créer un devis.</a>
+				{% endif %}
+
+			</div>
+			<img src="img/laurier.png" style="
+									    position: absolute;
+									    left: 50%;
+									    bottom: 10%;
+									    float: right;
+									    width: auto;
+									    height: 389px;
+									">
+		</div>
+
+
+	{% endblock %}
+{% endblock %}

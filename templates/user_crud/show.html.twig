@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block content %}
+
+<div class="bloc">
+    <h1>Informations sur l'utilisateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ user.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ user.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ user.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ user.ville }}</td>
+            </tr>
+            <tr>
+                <th>Code Postal</th>
+                <td>{{ user.cp }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <input type="button" style="position: absolute; margin-top:175px;" class="bouton_validation" href="{{ path('app_accueil') }}" value="Retour vers l'accueil">
+
+    <a class="link-success" href="{{ path('app_user_crud_edit', {'id': user.id}) }}">Modifier vos informations</a>
+</div>
+{% endblock %}

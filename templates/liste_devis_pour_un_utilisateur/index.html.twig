@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ListeDevisPourUnUtilisateurController!{% endblock %}
+
+{% block content %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="bloc">
+		<h1>Devis index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Date</th>
+					<th>Hauteur</th>
+					<th>Longueur</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for unDevis in listeDevis %}
+					<tr>
+						<td>{{ unDevis.id }}</td>
+						<td>{{ unDevis.date ? unDevis.date|date('Y-m-d') : '' }}</td>
+						<td>{{ unDevis.hauteur }}</td>
+						<td>{{ unDevis.longueur }}</td>
+						<td>
+							<a class="bouton_formulaire" href="{{ path('app_devis_crud_show', {'id': unDevis.id}) }}">Afficher</a>
+							<a class="bouton_formulaire" href="{{ path('app_devis_crud_edit', {'id': unDevis.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Aucun résultat</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+    </div>
+{% endblock %}
